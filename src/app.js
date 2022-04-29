@@ -1,24 +1,19 @@
 const express = require("express");
 const checkPalindrom = require("./palindromo");
 
-class AppController {
-  constructor() {
-    this.express = express();
+const app = express();
 
-    this.middlewares();
-    this.init();
-  }
+const port = 3000;
 
-  middlewares() {
-    this.express.listen(3000);
-  }
+app.use(express.json({ limit: "20mb" }));
 
-  init() {
-    console.log("============START===========");
-    const word = "mAlAyAlam";
-    const isPalindromo = checkPalindrom(word);
-    console.log(`A palavra ${word} é um palindromo? ${isPalindromo}`);
-  }
-}
+app.post("/checkPalindrom", (req, res) => {
+  console.log(req.body);
+  const word = req.body.word;
+  const isPalindrom = checkPalindrom(word);
+  res.send(isPalindrom);
+});
 
-module.exports = new AppController();
+app.listen(port, () =>
+  console.log(`Hello world app listening on port ${port}!`)
+);

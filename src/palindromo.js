@@ -11,8 +11,11 @@ function checkPalindrom(str) {
     .replace("-", "")
     .replace("/", "")
     .replace(/\./g, "");
-  console.log(word);
-  return word.toLowerCase() === word.split("").reverse().join("");
+
+  const isPalindromo = word === word.split("").reverse().join("");
+  console.log(isPalindromo);
+
+  return isPalindromo;
 }
 
 module.exports = checkPalindrom;
