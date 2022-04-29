@@ -12,10 +12,7 @@ function checkPalindrom(str) {
     .replace("/", "")
     .replace(/\./g, "");
 
-  const isPalindromo = word === word.split("").reverse().join("");
-  console.log(isPalindromo);
-
-  return isPalindromo;
+  return word === word.split("").reverse().join("");
 }
 
 module.exports = checkPalindrom;

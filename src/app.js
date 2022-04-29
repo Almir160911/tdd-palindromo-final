@@ -8,10 +8,13 @@ const port = 3000;
 app.use(express.json({ limit: "20mb" }));
 
 app.post("/checkPalindrom", (req, res) => {
-  console.log(req.body);
-  const word = req.body.word;
-  const isPalindrom = checkPalindrom(word);
-  res.send(isPalindrom);
+  const word = req?.body?.word;
+  if (word) {
+    const isPalindrom = checkPalindrom(word);
+    res.send(isPalindrom);
+  } else {
+    res.send({ message: "É necessario informar uma frase/palavra" });
+  }
 });
 
 app.listen(port, () =>
